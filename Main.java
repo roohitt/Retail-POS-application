@@ -206,8 +206,6 @@ public class Main {
 					frame.setVisible(false);
 					afterLogin.setVisible(true);
 					
-					
-					
 				}
 				else {
 					textField.setText("Invalid pin");

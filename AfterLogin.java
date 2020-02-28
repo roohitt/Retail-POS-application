@@ -207,5 +207,7 @@ public class AfterLogin extends JFrame {
 		
 		panel.add(lblNewLabel);
 		contentPane.setLayout(gl_contentPane);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 	}
 }

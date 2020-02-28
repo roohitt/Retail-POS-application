@@ -49,6 +49,8 @@ public class New_Entry_GUI extends JFrame {
 		});
 		
 	}
+	
+	
 
 	/**
 	 * Create the frame.
@@ -170,5 +172,7 @@ public class New_Entry_GUI extends JFrame {
 		);
 		 
 		contentPane.setLayout(gl_contentPane);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 	}
 }

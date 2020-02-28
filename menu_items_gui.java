@@ -103,6 +103,9 @@ public class menu_items_gui extends JFrame {
 		btnDeleteEntry = new JButton("Del Item");
 		btnDeleteEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				Delete_entry_GUI delete_entry_GUI = new Delete_entry_GUI();
+				delete_entry_GUI.setVisible(true);
 			}
 		});
 		
@@ -155,6 +158,8 @@ public class menu_items_gui extends JFrame {
 					.addGap(97))
 		);
 		contentPane.setLayout(gl_contentPane);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
 	}
 }
