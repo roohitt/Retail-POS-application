@@ -143,7 +143,7 @@ public class AfterLogin extends JFrame {
 		todays_coupons.setBackground(Color.GREEN);
 		
 		
-		panel.setBackground(Color.ORANGE);
+		panel.setBackground(Color.GREEN);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -207,7 +207,5 @@ public class AfterLogin extends JFrame {
 		
 		panel.add(lblNewLabel);
 		contentPane.setLayout(gl_contentPane);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
 	}
 }

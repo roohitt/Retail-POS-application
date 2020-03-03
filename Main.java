@@ -42,8 +42,8 @@ public class Main {
 						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 						Date date = new Date();
 						
-						text_date.setBackground(Color.BLUE);
-						text_date.setForeground(Color.WHITE);
+						text_date.setBackground(Color.ORANGE);
+						text_date.setForeground(Color.BLACK);
 						text_date.setFont(font1);
 						text_date.setText("                             "+dateFormat.format(date));
 						
@@ -65,27 +65,28 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 900);
 		
-		welcome_texTextArea.setBackground(Color.BLUE);
-		welcome_texTextArea.setForeground(Color.WHITE);
+		welcome_texTextArea.setBackground(Color.GREEN);
+		welcome_texTextArea.setForeground(Color.BLACK);
 		welcome_texTextArea.setFont(font1);
 		welcome_texTextArea.setText("  WELCOME  TO THE PORTAL!! ENTER THE PIN TO LOGIN.");
 		
-		copyrightTextArea.setBackground(Color.BLUE);
-		copyrightTextArea.setForeground(Color.WHITE);
+		copyrightTextArea.setBackground(Color.GREEN);
+		copyrightTextArea.setForeground(Color.BLACK);
 		copyrightTextArea.setFont(font1);
 		copyrightTextArea.setText("                                       MADE BY- RK");
 		
 		
 		
-		toppanel.setBackground(Color.BLUE);
+		toppanel.setBackground(Color.GREEN);
 		toppanel.setPreferredSize(new Dimension(600,100));
 		toppanel.setLayout(new BorderLayout());
 		toppanel.add(welcome_texTextArea, BorderLayout.SOUTH);
+		text_date.setBackground(Color.ORANGE);
 		toppanel.add(text_date);
 		
 		lowerpanel.setPreferredSize(new Dimension(600,100));
 		lowerpanel.setLayout(new BorderLayout());
-		lowerpanel.setBackground(Color.BLUE);
+		lowerpanel.setBackground(Color.GREEN);
 		lowerpanel.add(copyrightTextArea, BorderLayout.CENTER);
 		
 		
@@ -95,12 +96,12 @@ public class Main {
 		frame.getContentPane().add(BorderLayout.NORTH,toppanel);
 		frame.getContentPane().add(BorderLayout.SOUTH,lowerpanel);
 		centerpanel.setForeground(Color.WHITE);
-		centerpanel.setBackground(Color.YELLOW);
+		centerpanel.setBackground(Color.ORANGE);
 		frame.getContentPane().add(BorderLayout.CENTER,centerpanel);
 		
 		JButton NUmber1 = new JButton("1");
-		NUmber1.setForeground(Color.WHITE);
-		NUmber1.setBackground(Color.BLUE);
+		NUmber1.setForeground(Color.BLACK);
+		NUmber1.setBackground(Color.GREEN);
 		NUmber1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"1");
@@ -109,8 +110,8 @@ public class Main {
 		});
 		
 		JButton button2 = new JButton("2");
-		button2.setForeground(Color.WHITE);
-		button2.setBackground(Color.BLUE);
+		button2.setForeground(Color.BLACK);
+		button2.setBackground(Color.GREEN);
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"2");
@@ -118,8 +119,8 @@ public class Main {
 		});
 		
 		JButton button = new JButton("3");
-		button.setForeground(Color.WHITE);
-		button.setBackground(Color.BLUE);
+		button.setForeground(Color.BLACK);
+		button.setBackground(Color.GREEN);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"3");
@@ -127,8 +128,8 @@ public class Main {
 		});
 		
 		JButton button_1 = new JButton("5");
-		button_1.setBackground(Color.BLUE);
-		button_1.setForeground(Color.WHITE);
+		button_1.setBackground(Color.GREEN);
+		button_1.setForeground(Color.BLACK);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"5");
@@ -137,8 +138,8 @@ public class Main {
 		});
 		
 		JButton button_2 = new JButton("6");
-		button_2.setBackground(Color.BLUE);
-		button_2.setForeground(Color.WHITE);
+		button_2.setBackground(Color.GREEN);
+		button_2.setForeground(Color.BLACK);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -147,8 +148,8 @@ public class Main {
 		});
 		
 		JButton button_3 = new JButton("4");
-		button_3.setBackground(Color.BLUE);
-		button_3.setForeground(Color.WHITE);
+		button_3.setBackground(Color.GREEN);
+		button_3.setForeground(Color.BLACK);
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"4");
@@ -156,8 +157,8 @@ public class Main {
 		});
 		
 		JButton button_4 = new JButton("8");
-		button_4.setBackground(Color.BLUE);
-		button_4.setForeground(Color.WHITE);
+		button_4.setBackground(Color.GREEN);
+		button_4.setForeground(Color.BLACK);
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -167,18 +168,18 @@ public class Main {
 		});
 		
 		JButton button_5 = new JButton("9");
-		button_5.setBackground(Color.BLUE);
+		button_5.setBackground(Color.GREEN);
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"9");
 				
 			}
 		});
-		button_5.setForeground(Color.WHITE);
+		button_5.setForeground(Color.BLACK);
 		
 		JButton button_6 = new JButton("7");
-		button_6.setBackground(Color.BLUE);
-		button_6.setForeground(Color.WHITE);
+		button_6.setBackground(Color.GREEN);
+		button_6.setForeground(Color.BLACK);
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"7");
@@ -187,8 +188,8 @@ public class Main {
 		});
 		
 		JButton button_7 = new JButton("0");
-		button_7.setBackground(Color.BLUE);
-		button_7.setForeground(Color.WHITE);
+		button_7.setBackground(Color.GREEN);
+		button_7.setForeground(Color.BLACK);
 		button_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(textField.getText()+"0");
@@ -197,7 +198,7 @@ public class Main {
 		});
 		
 		JButton button_8 = new JButton("=>");
-		button_8.setBackground(Color.BLUE);
+		button_8.setBackground(Color.GREEN);
 		button_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(pin.equals(textField.getText())) {
@@ -212,11 +213,11 @@ public class Main {
 				}
 			}
 		});
-		button_8.setForeground(Color.WHITE);
+		button_8.setForeground(Color.BLACK);
 		
 		JButton btnX = new JButton("X");
-		btnX.setBackground(Color.BLUE);
-		btnX.setForeground(Color.WHITE);
+		btnX.setBackground(Color.GREEN);
+		btnX.setForeground(Color.BLACK);
 		btnX.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -236,8 +237,8 @@ public class Main {
 		});
 		
 		JButton btnExit = new JButton("EXIT");
-		btnExit.setBackground(Color.BLUE);
-		btnExit.setForeground(Color.WHITE);
+		btnExit.setBackground(Color.GREEN);
+		btnExit.setForeground(Color.BLACK);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);

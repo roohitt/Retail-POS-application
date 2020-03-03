@@ -20,6 +20,8 @@ import javax.swing.JTable;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JScrollBar;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class menu_items_gui extends JFrame {
 
@@ -57,12 +59,15 @@ public class menu_items_gui extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		table_1 = new JTable();
-		
+		table_1.setBackground(Color.GREEN);		
 		JButton load_table = new JButton("Refresh");
+		load_table.setBackground(Color.GREEN);
+		load_table.setForeground(Color.BLACK);
 		load_table.addActionListener(new ActionListener() {
 
 			@Override
@@ -87,9 +92,11 @@ public class menu_items_gui extends JFrame {
 		});
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
+		panel.setBackground(Color.GREEN);
 		
 		btnNewEntry = new JButton("New Item\r\n");
+		btnNewEntry.setBackground(Color.GREEN);
+		btnNewEntry.setForeground(Color.BLACK);
 		btnNewEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -101,6 +108,8 @@ public class menu_items_gui extends JFrame {
 		});
 		
 		btnDeleteEntry = new JButton("Del Item");
+		btnDeleteEntry.setBackground(Color.GREEN);
+		btnDeleteEntry.setForeground(Color.BLACK);
 		btnDeleteEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -110,13 +119,16 @@ public class menu_items_gui extends JFrame {
 		});
 		
 		btnQuit = new JButton("Quit");
+		btnQuit.setBackground(Color.GREEN);
+		btnQuit.setForeground(Color.BLACK);
 		btnQuit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);//terminates the current running java virtual machine and 0 means normal termination
 			}
 		});
 		
-		JScrollBar scrollBar = new JScrollBar();
+		JLabel lblNewLabel = new JLabel("Refresh to load the Table");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -133,14 +145,17 @@ public class menu_items_gui extends JFrame {
 							.addComponent(btnDeleteEntry, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
 						.addComponent(load_table, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
 					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(141)
+					.addComponent(lblNewLabel)
+					.addContainerGap(144, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(38)
+					.addContainerGap()
+					.addComponent(lblNewLabel)
+					.addGap(9)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnNewEntry)
@@ -153,13 +168,9 @@ public class menu_items_gui extends JFrame {
 						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(97))
+					.addGap(55))
 		);
 		contentPane.setLayout(gl_contentPane);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-
 	}
 }
