@@ -32,7 +32,6 @@ public class generate_bill extends JFrame {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel;
 	private JButton btnNewButton;
-	private JButton button;
 	private JButton btnExit;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
@@ -49,7 +48,11 @@ public class generate_bill extends JFrame {
 	private JLabel QuantityRequired_label;
 	private JTextField Quantity_required_textfeild;
 	private JButton AddItem_button;
-
+	 String nameString ;
+	 String priceString;
+	 String quantitysString;
+	 int count=0, total_price=0;
+	 String selected_quantity;
 	/**
 	 * Launch the application.
 	 */
@@ -72,32 +75,15 @@ public class generate_bill extends JFrame {
 	 */
 	public generate_bill() {
 		
-		Thread clockThread = new Thread() {
-			
-			public void run() {
-				try {
-					while(true) {
-						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-						Date date = new Date();
-						lblNewLabel_6.setText(dateFormat.format(date));
-						
-						sleep(1000);
-					}
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		clockThread.start();
+
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 200, 650, 700);
+		setBounds(200, 200, 650, 488);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		lblNewLabel_1 = new JLabel("AUMTOMATED PURCHASE ORDER");
+		lblNewLabel_1 = new JLabel("AUTOMATED PURCHASE ORDER");
 		lblNewLabel_1.setForeground(new Color(107, 142, 35));
 		lblNewLabel_1.setFont(new Font("Lucida Handwriting", Font.BOLD, 20));
 		
@@ -109,14 +95,19 @@ public class generate_bill extends JFrame {
 		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setForeground(new Color(107, 142, 35));
 		
-		btnNewButton = new JButton("New button");
-		
-		button = new JButton("New button");
+		btnNewButton = new JButton("Print");
 		
 		btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.exit(0);
+			}
+		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -126,12 +117,14 @@ public class generate_bill extends JFrame {
 							.addContainerGap()
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 492, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
 								.addComponent(btnExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addComponent(lblNewLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(36))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -139,15 +132,14 @@ public class generate_bill extends JFrame {
 					.addComponent(lblNewLabel_1)
 					.addGap(28)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 525, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnNewButton)
-							.addGap(15)
-							.addComponent(button)
 							.addGap(18)
-							.addComponent(btnExit)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+							.addComponent(btnExit))
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(216))
 		);
 		
 		lblNewLabel_2 = new JLabel("RK & Sons");
@@ -162,6 +154,22 @@ public class generate_bill extends JFrame {
 		lblNewLabel_6 = new JLabel("New label");
 		
 		JPanel panel_1 = new JPanel();
+		
+		JLabel lblNewLabel_7 = new JLabel("Total Items:");
+		
+		JLabel lblGst = new JLabel("Total Price: ");
+		
+		JLabel lblGst_1 = new JLabel("GST: ");
+		
+		JLabel lblFinalPrice = new JLabel("Final Price:");
+		
+		JLabel lblNewLabel_8 = new JLabel("0");
+		
+		JLabel label = new JLabel("0");
+		
+		JLabel label_1 = new JLabel("18%");
+		
+		JLabel label_2 = new JLabel("0");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -179,7 +187,21 @@ public class generate_bill extends JFrame {
 									.addComponent(lblNewLabel_5)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblNewLabel_6))
-								.addComponent(lblNewLabel_4))))
+								.addComponent(lblNewLabel_4)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblNewLabel_7)
+							.addGap(18)
+							.addComponent(lblNewLabel_8))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblGst)
+								.addComponent(lblGst_1)
+								.addComponent(lblFinalPrice))
+							.addGap(18)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_2)
+								.addComponent(label_1)
+								.addComponent(label))))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -196,7 +218,23 @@ public class generate_bill extends JFrame {
 						.addComponent(lblNewLabel_5))
 					.addGap(34)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(347, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_7)
+						.addComponent(lblNewLabel_8))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblGst)
+						.addComponent(label))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblGst_1)
+						.addComponent(label_1))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblFinalPrice)
+						.addComponent(label_2))
+					.addContainerGap(35, Short.MAX_VALUE))
 		);
 		
 		JLabel Item_number_label_search = new JLabel("Item Number:");
@@ -220,9 +258,10 @@ public class generate_bill extends JFrame {
 					 ResultSet rSet = statement.executeQuery(queryString);
 					 
 					if(rSet.next()) {
-						 String nameString = rSet.getString("Item_name");
-						 String priceString = rSet.getString("Price");
-						 String quantitysString = rSet.getString("Quantity");
+						nameString = rSet.getString("Item_name");
+						priceString = rSet.getString("Price");
+						quantitysString = rSet.getString("Quantity");
+						
 						 
 						 Item_name_value.setText(nameString);
 						 Price_value.setText(priceString);
@@ -247,9 +286,9 @@ public class generate_bill extends JFrame {
 		
 		Price_label = new JLabel("Price:");
 		
-		Quantity_value = new JLabel("xyz");
+		Quantity_value = new JLabel("0");
 		
-		Price_value = new JLabel("xyz");
+		Price_value = new JLabel("0");
 		
 		QuantityRequired_label = new JLabel("Quantity Required:");
 		
@@ -257,6 +296,27 @@ public class generate_bill extends JFrame {
 		Quantity_required_textfeild.setColumns(10);
 		
 		AddItem_button = new JButton("Add Item");
+		AddItem_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				try {
+					selected_quantity = Quantity_required_textfeild.getText();
+					total_price = total_price + (Integer.parseInt(selected_quantity)*Integer.parseInt(priceString));
+					count = count + Integer.parseInt(selected_quantity);
+					lblNewLabel_8.setText(String.valueOf(count));
+					label.setText(String.valueOf(total_price));
+					label_2.setText(String.valueOf(total_price*0.18+total_price));
+					
+				
+				}
+				catch (Exception e) {
+					System.out.print(e);
+				}
+				
+			}
+		});
+		
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -314,6 +374,25 @@ public class generate_bill extends JFrame {
 							.addComponent(Price_value)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		Thread clockThread = new Thread() {
+			
+			public void run() {
+				try {
+					while(true) {
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+						Date date = new Date();
+						lblNewLabel_6.setText(dateFormat.format(date));
+						
+						sleep(1000);
+					}
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		clockThread.start();
 		panel_1.setLayout(gl_panel_1);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);

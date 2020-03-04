@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import java.awt.Font;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.ImageIcon;
 
 public class menu_items_gui extends JFrame {
 
@@ -57,14 +59,14 @@ public class menu_items_gui extends JFrame {
 	public menu_items_gui() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 500);
+		setBounds(100, 100, 534, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		table_1 = new JTable();
-		table_1.setBackground(Color.GREEN);		
+		table_1.setBackground(Color.WHITE);		
 		JButton load_table = new JButton("Refresh");
 		load_table.setBackground(Color.GREEN);
 		load_table.setForeground(Color.BLACK);
@@ -90,9 +92,6 @@ public class menu_items_gui extends JFrame {
 			}
 			
 		});
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.GREEN);
 		
 		btnNewEntry = new JButton("New Item\r\n");
 		btnNewEntry.setBackground(Color.GREEN);
@@ -130,25 +129,27 @@ public class menu_items_gui extends JFrame {
 		JLabel lblNewLabel = new JLabel("Refresh to load the Table");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\rs631\\eclipse-workspace\\counter_application\\src\\counter_application\\3d06c742-15cc-49b2-8845-7ef42d0c9f97.jpg"));
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addComponent(table_1, GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnQuit, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(btnNewEntry, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-							.addComponent(btnDeleteEntry, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
-						.addComponent(load_table, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+						.addComponent(load_table, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+						.addComponent(btnDeleteEntry, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(btnNewEntry, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(141)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(153)
 					.addComponent(lblNewLabel)
-					.addContainerGap(144, Short.MAX_VALUE))
+					.addContainerGap(166, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -165,7 +166,7 @@ public class menu_items_gui extends JFrame {
 							.addComponent(load_table)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnQuit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(table_1, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
 					.addGap(55))

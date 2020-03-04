@@ -82,7 +82,7 @@ public class AfterLogin extends JFrame {
 		clockThread.start();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 172);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -92,32 +92,26 @@ public class AfterLogin extends JFrame {
 		btnExit.setForeground(Color.BLACK);
 		btnExit.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnExit.setBackground(Color.GREEN);
-		
-		JButton button = new JButton("Menu Items");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		button.setBackground(Color.GREEN);
-		
-		JButton button_1 = new JButton("Menu Items");
-		button_1.setForeground(Color.BLACK);
-		button_1.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		button_1.setBackground(Color.GREEN);
-		
-		
-		JButton _past_orders = new JButton("Past Orders");
-		_past_orders.setForeground(Color.BLACK);
-		_past_orders.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		_past_orders.setBackground(Color.GREEN);
-		
-		JButton CustomerEntry = new JButton("Customers");
-		CustomerEntry.setForeground(Color.BLACK);
-		CustomerEntry.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		CustomerEntry.setBackground(Color.GREEN);
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.exit(0);
+				
+			}
+		});
 		
 		JButton billing = new JButton("Generate Bill");
 		billing.setForeground(Color.BLACK);
 		billing.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		billing.setBackground(Color.GREEN);
+		billing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				generate_bill gnBill = new generate_bill();
+				gnBill.setVisible(true);
+			}
+		});
+		
 		
 		JButton menu_items = new JButton("Menu Items");
 		menu_items.setForeground(Color.BLACK);
@@ -132,76 +126,34 @@ public class AfterLogin extends JFrame {
 			}
 		});
 		
-		JButton tables_reservation = new JButton("Tables");
-		tables_reservation.setForeground(Color.BLACK);
-		tables_reservation.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		tables_reservation.setBackground(Color.GREEN);
-		
-		JButton todays_coupons = new JButton("Coupons");
-		todays_coupons.setForeground(Color.BLACK);
-		todays_coupons.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		todays_coupons.setBackground(Color.GREEN);
-		
 		
 		panel.setBackground(Color.GREEN);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addContainerGap()
-									.addComponent(billing, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(_past_orders, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(CustomerEntry, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(button, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
 							.addComponent(menu_items, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(tables_reservation, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+							.addComponent(billing, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(todays_coupons, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(menu_items, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(tables_reservation, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addComponent(todays_coupons, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(_past_orders, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(CustomerEntry, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(billing, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(billing, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addGap(78))
 		);
 		
 		
