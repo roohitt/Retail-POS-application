@@ -19,7 +19,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -52,6 +55,7 @@ public class generate_bill extends JFrame {
 	 String priceString;
 	 String quantitysString;
 	 int count=0, total_price=0;
+	 double final_price=0;
 	 String selected_quantity;
 	/**
 	 * Launch the application.
@@ -95,7 +99,39 @@ public class generate_bill extends JFrame {
 		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setForeground(new Color(107, 142, 35));
 		
-		btnNewButton = new JButton("Print");
+		btnNewButton = 	new JButton("Save&Print");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+		           try{    
+		               FileOutputStream fout=new FileOutputStream("D:\\testout.txt");  
+					   
+		               String text = "Total Items: "+ String.valueOf(count);
+		               String textString = "Total Price:" + String.valueOf(total_price);
+		               String text2sString = "GST: 18%";
+		               String text3sString = "Final Price: "+String.valueOf(final_price);
+		               
+		               byte[] mybytes = text.getBytes();
+		               byte[] mybytes1 = textString.getBytes();
+		               byte[] mybytes2 = text2sString.getBytes();
+		               byte[] mybytes3 = text3sString.getBytes();
+
+
+		               fout.write(mybytes);  
+		               fout.write('\n');
+		               fout.write(mybytes1); 
+		               fout.write('\n');  
+		               fout.write(mybytes2);  
+		               fout.write('\n');
+		               fout.write(mybytes3);    
+
+		               
+		               fout.close(); 
+		               System.out.println("success...");  
+		           }
+		              catch(Exception e){System.out.println(e);}
+			}
+		});
 		
 		btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -304,9 +340,11 @@ public class generate_bill extends JFrame {
 					selected_quantity = Quantity_required_textfeild.getText();
 					total_price = total_price + (Integer.parseInt(selected_quantity)*Integer.parseInt(priceString));
 					count = count + Integer.parseInt(selected_quantity);
+					final_price = total_price*0.18+total_price;
+					
 					lblNewLabel_8.setText(String.valueOf(count));
 					label.setText(String.valueOf(total_price));
-					label_2.setText(String.valueOf(total_price*0.18+total_price));
+					label_2.setText(String.valueOf(final_price));
 					
 				
 				}
